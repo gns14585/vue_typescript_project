@@ -7,24 +7,45 @@
         class="list__avatar__image"
       />
       <div class="list__avatar__text-box">
-        <span class="name">Marco</span>
-        <span class="duty">User Experience</span>
+        <span class="name">{{ data.userName }}</span>
+        <span class="duty">{{ data.userRole }}</span>
       </div>
     </div>
     <div class="list__item">
-      <BarChart />
+      <BarChart :data="data.userResumeScore" />
     </div>
     <div class="list__item">
-      <BarChart />
+      <BarChart :data="data.userSkillMatch" />
     </div>
     <div class="list__item">
-      <div class="list__item__chip">Senior</div>
+      <div v-if="data.userSkill === 'Senior'" class="list__item__chip">
+        {{ data.userSkill }}
+      </div>
+      <div v-if="data.userSkill === 'Junior'" class="list__item__chip junior">
+        {{ data.userSkill }}
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import BarChart from "@components/atoms/chart/BarChart.vue";
+import { toRefs } from "vue";
+
+interface List {
+  userName: string;
+  userRole: string;
+  userResumeScore: number;
+  userSkillMatch: number;
+  userSkill: string;
+}
+
+interface Props {
+  data: List;
+}
+
+const props = defineProps<Props>();
+const { data } = toRefs(props);
 </script>
 
 <style lang="scss" scoped>
@@ -93,6 +114,11 @@ import BarChart from "@components/atoms/chart/BarChart.vue";
       color: $color-blue-000;
       background-color: rgba($color-blue-000, 0.1);
       border-radius: 12px;
+
+      &.junior {
+        color: orange;
+        background-color: rgba(orange, 0.1);
+      }
     }
   }
 }

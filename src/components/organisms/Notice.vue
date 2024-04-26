@@ -28,7 +28,11 @@
         <span class="label">Skill</span>
       </div>
       <div class="notice__body__list-box">
-        <NoticeList v-for="item in tableData" :key="item.userName" />
+        <NoticeList
+          v-for="item in tableData"
+          :key="item.userName"
+          :data="item"
+        />
       </div>
     </div>
   </div>
@@ -38,7 +42,15 @@
 import NoticeList from "@components/mocules/List.vue";
 import { ref } from "vue";
 
-const tableData = ref([
+interface List {
+  userName: string;
+  userRole: string;
+  userResumeScore: number;
+  userSkillMatch: number;
+  userSkill: string;
+}
+
+const tableData = ref<List[]>([
   {
     userName: "Marco",
     userRole: "FrontEnd Developer",
