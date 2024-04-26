@@ -1,7 +1,11 @@
 <template>
   <div class="list">
     <div class="list__avatar">
-      <img src="" alt="" class="list__avatar__image" />
+      <img
+        src="@/assets/images/user-01.jpg"
+        alt=""
+        class="list__avatar__image"
+      />
       <div class="list__avatar__text-box">
         <span class="name">Marco</span>
         <span class="duty">User Experience</span>
