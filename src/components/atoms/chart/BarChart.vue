@@ -1,7 +1,7 @@
 <template>
   <div class="bar-chart">
     <div class="bar-chart__container">
-      <span class="bar-chart__container__value">{{ data }}</span>
+      <span class="bar-chart__container__value">{{ data }}%</span>
       <div class="bar-chart__container__base">
         <div
           v-if="data >= 80"
