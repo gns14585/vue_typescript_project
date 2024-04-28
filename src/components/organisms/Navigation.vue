@@ -48,6 +48,7 @@ const menu = [
     icon: "Dashboard",
     label: "Dashboard",
   },
+
   {
     icon: "Indox",
     label: "Indox",
